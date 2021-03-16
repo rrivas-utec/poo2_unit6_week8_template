@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "p3.h"
+#include "binary_tree.h"
 
 using namespace std;
 

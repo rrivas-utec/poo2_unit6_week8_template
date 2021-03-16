@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "p6.h"
+#include "graph.h"
 
 using namespace std;
 
