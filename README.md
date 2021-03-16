@@ -134,7 +134,7 @@ Utilizando el grafo no dirigido  (**`grafo_t`**) desarrollado en clase, desarrol
     cout << boolalpha << g2.is_connected() << endl;
 ```
 
-## Problema #6 - Árbol Expandido Máximo - graph
+## Problema #6 - Árbol Expandido Máximo - graph (optional)
 Utilizando el grafo no dirigido  (**`grafo_t`**) desarrollado en clase, crear los métodos Kruskal y Prim en reversa (`kruskal_max`, `prim_max`) de modo que permitan ubicar el Árbol Expandido Máximo.
 
 **Casos de uso**
