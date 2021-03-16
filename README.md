@@ -3,39 +3,44 @@
 Problemas del curso de Programación Orientada a Objetos 2 - CS1103
 
 ## Problema #1 - Ordenamiento Heap
-Basado en la estructura [**`heap`**](https://repl.it/@RubenDemetrioDemetrio/poo22021-0heap#main.cpp), crear la clase **`heap_sort`** que implemente el método `get`, el cual recibe como parametro un contenedor y retorne un contenedor del mismo tipo ordenado en forma ascendente o descendente.
+Basado en la estructura [**`heap`**](https://repl.it/@RubenDemetrioDemetrio/poo22021-0heap#main.cpp), crear el functor **`heap_sort`** que reciba como parametro un contenedor y retorne un contenedor del mismo tipo ordenado en forma ascendente o descendente.
 
 **Casos de uso**
 ```cpp
-    vector<int> vec {10, 4, 1, 32, 5, 7, 11};
-    // Caso de uso #1
+    vector<int> vec{ 10, 4, 1, 32, 5, 7, 11 };
+// Caso de uso #1
     heap_sort hs;
     auto r1 = hs.get(vec);
+    for (const auto& item : r1)
+        cout << item << " ";
+    cout << endl;
     // Caso de uso #2
-    auto r2 = hs.get<list>({20, 30 ,40 , 50, 100, 2, 2});
+    auto r2 = hs.get<list>({ 20, 30 ,40 , 50, 100, 2, 2 });
+    for (const auto& item : r2)
+        cout << item << " ";
+    cout << endl;
     // Caso de uso #3
-    auto r2 = hs.get<deque, greater<int>>({20, 30 ,40 , 50, 100, 2, 2});
-    
+    auto r3 = hs.get<deque, greater>({ 20, 30 ,40 , 50, 100, 2, 2 });
+    for (const auto& item : r3)
+        cout << item << " ";
+    cout << endl;
 ```
 ## Problema #2 - Ordenamiento Binario - Binary Tree
-Basado en la estructura [**`binary tree`**](https://repl.it/@RubenDemetrioDemetrio/poo22021-0binarytree#main.cpp), crear la clase **`binary_search`** que reciba al momento de construir un objeto un parametro del tipo contenedor que contenga la información, que permita agregar nuevos valores usando el método `push`, que pueda recorrer los valores usando los métodos `bfs` y `dfs` y que permita ubicar un valor utilizando el operador `()` el cual retorne un `pair<T, bool>` donde T es el tipo de valor de almacenado y bool retorne si fue o no encontrado.
+Basado en la estructura [**`binary tree`**](https://repl.it/@RubenDemetrioDemetrio/poo22021-0binarytree#main.cpp), crear la clase **`binary_search`** que reciba al momento de construir un objeto un parametro del tipo vector que contenga la información, que permita agregar nuevos valores usando el método `push`, que pueda recorrer los valores usando los métodos `bfs` y `dfs` y que permita ubicar un valor utilizando el operador `()` el cual retorne un pair<T, bool> donde T es el tipo de valor de almacenado y bool retorne si fue o no encontrado.
 **Casos de uso**
 ```cpp
-    map<int, string> vec {{1, "A"}, {4, "B"}, {11, "C"}, { 32, "D"}, { 5, "E"} { 7 , "F"}, { 12 , "G"}};
-    // Caso de uso #1
-    binary_search bs(vec);
-    bs.bfs([](int item){ cout << item.first << ", " << item.second << endl; });
-    auto result = bs(7);
-    if (result.second) {
-        auto const& [key, value] = result.first;
-        cout << key << ", " << value << endl;
-    }
-    else {
-        cout << "Valor no encontrado\n";
-    }
+    vector<int> vec {1, 4, 5, 6, 11, 2, 3, 7};
+    utec::binary_search<int> bs (vec);
+    bs.bfs([](auto item){ cout << item << " "; });
     cout << endl;
-    bs.push({14, "H"})
-    bs.dfs([](int item){ cout << item.first << ", " << item.second << endl; });
+    bs.dfs([](auto item){ cout << item << " "; });
+    cout << endl;
+    auto result = bs(4);  // Retorna el puntero inteligente al nodo
+    if (result)
+        cout << result->data << endl;
+    bs.push(8);
+    bs.bfs([](auto item){ cout << item << " "; });
+    cout << endl;
 ```
 ## Problema #3 - Diametro de un Arbol - Tree
 Utilizando el arbol binario (**`binary_tree`**) desarrollado en clase, desarrollar el método `diametro` que permita calcular el diámetro de un árbol (es la distancia basada en vertice mas larga entre 2 hojas de un arbol).
@@ -73,7 +78,7 @@ Utilizando el arbol binario (**`binary_tree`**) desarrollado en clase, desarroll
 ## Problema #4 - Hermanos - Tree
 Utilizando el arbol binario (**`binary_tree`**) desarrollado en clase, desarrollar el método `are_sibling(node a, node b)` que confirme si 2 nodos son hermanos (se encuentran en un mismo nivel).
 
-**Casos de uso**  
+**Casos de uso**
 ```cpp
     // Caso de uso #1
     binary_tree<int> a(1);
@@ -97,9 +102,9 @@ Utilizando el arbol binario (**`binary_tree`**) desarrollado en clase, desarroll
 ```
 ## Problema #5 - Conectado - graph
 Utilizando el grafo no dirigido  (**`grafo_t`**) desarrollado en clase, desarrollar el método `is_connected` que determine si el grafo es conectado.
- **NOTA**: Se sugiere implementar el método DFS.
+**NOTA**: Se sugiere implementar el método DFS.
 
-**Casos de uso**  
+**Casos de uso**
 ```cpp
     // Caso de uso #1
     graph_t g;
@@ -132,7 +137,7 @@ Utilizando el grafo no dirigido  (**`grafo_t`**) desarrollado en clase, desarrol
 ## Problema #6 - Árbol Expandido Máximo - graph
 Utilizando el grafo no dirigido  (**`grafo_t`**) desarrollado en clase, crear los métodos Kruskal y Prim en reversa (`kruskal_max`, `prim_max`) de modo que permitan ubicar el Árbol Expandido Máximo.
 
-**Casos de uso**  
+**Casos de uso**
 ```cpp
     // Caso de uso #1
     graph_t g;
